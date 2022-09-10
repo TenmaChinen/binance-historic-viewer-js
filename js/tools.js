@@ -12,20 +12,21 @@ selectInterval.innerHTML = intervals.reduce( (acc,list)=>{
   return acc + `<option value="${list[0]}">${list[1]}</option>\n`;
 },'');
 
+/*   E V E N T S   */
 btnSearchAsset1.onclick = function () {
   asset1 = inputAsset2.value;
   asset2 = inputAsset2.value;
-
+  
   if (assets.includes(asset2)) {
-      dialogWindow.show();
-      addAssetButtonsDiv(Object.keys(assetsPairs[asset1]).sort(), inputAsset1);
-
+    dialogWindow.show();
+    addAssetButtonsDiv(Object.keys(assetsPairs[asset1]).sort(), inputAsset1);
+    
   } else if (asset1 === "") {
-      dialogWindow.show();
-
-      addAssetButtonsDiv(assets, inputAsset1);
+    dialogWindow.show();
+    
+    addAssetButtonsDiv(assets, inputAsset1);
   } else {
-      alert("ASset 2 doesn't exist");
+    alert("ASset 2 doesn't exist");
   }
 }
 
@@ -34,28 +35,45 @@ btnSearchAsset2.onclick = function () {
   asset1 = inputAsset1.value;
   asset2 = inputAsset2.value;
   if (assets.includes(asset1)) {
-      console.log(assetsPairs);
-      dialogWindow.show();
-      addAssetButtonsDiv(Object.keys(assetsPairs[asset1]).sort(), inputAsset2);
+    dialogWindow.show();
+    addAssetButtonsDiv(Object.keys(assetsPairs[asset1]).sort(), inputAsset2);
   } else if (asset2 === "") {
-      dialogWindow.show();
-      addAssetButtonsDiv(assets, inputAsset2);
+    dialogWindow.show();
+    addAssetButtonsDiv(assets, inputAsset2);
   }
 }
 
 const KEY_ENTER = 13;
-const KEY_ESC = 27;
 
 inputAsset1.onkeydown = function (event) {
   if (event.keyCode === KEY_ENTER) {
-      event.preventDefault();
-      loadKlines();
+    event.preventDefault();
+    loadClosePrices();
   }
 }
 
 inputAsset2.onkeydown = function (event) {
   if (event.keyCode === KEY_ENTER) {
-      event.preventDefault();
-      loadKlines();
+    event.preventDefault();
+    loadClosePrices();
   }
 }
+
+
+selectInterval.onchange = function(event){
+  loadClosePrices();
+}
+
+/*   E V E N T S   */
+
+/*   F U N C T I O N S   */
+
+function getCurrentPair() {
+  return assetsPairs[inputAsset1.value][inputAsset2.value][0];
+}
+
+function getCurrentInterval() {
+  return selectInterval.value;
+}
+
+/*   F U N C T I O N S   */

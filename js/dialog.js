@@ -1,6 +1,6 @@
 const dialogWindow = document.getElementById("dialog-window");
 
-const btnClose = document.getElementsByClassName("close")[0];
+const btnClose = document.getElementById("btn-close");
 
 const searchFilter = document.getElementById("search-filter");
 
@@ -19,7 +19,7 @@ function addAssetButtonsDiv(assetsArray, inputWidget) {
         newDiv.innerHTML = asset;
         newDiv.onclick = function () {
             inputWidget.value = asset;
-            loadKlines(assetsPairs[inputAsset1.value][inputAsset2.value][0]);
+            loadClosePrices(assetsPairs[inputAsset1.value][inputAsset2.value][0]);
         }
         newDiv.className = "dialog-table-cell";
         dialogTable.appendChild(newDiv);

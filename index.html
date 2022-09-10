@@ -7,13 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Pairs Viewer</title>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.0/Chart.min.js"></script>
-
   <!-- Icon library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/dialog.css">
   <link rel="stylesheet" href="css/toolbox.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chart.css">
 
 </head>
 
@@ -21,31 +20,27 @@
 
   <!-- TODO : CHANGE TO MODAL -->
   <!-- M O D A L -->
-  <dialog id="dialog-window" class="dialog-window">
-
-    <div class="dialog-body">
-      <!-- DIALOG HEADER -->
+  <dialog id="dialog-window">
+    <div class="dialog">
       <div class="dialog-header">
-        <h2 class="dialog-header-title">Asset Selector</h2>
-        <button class="close"><i class="fa fa-close"></i></button>
+        <h2 class="title">Asset Selector</h2>
+        <i id="btn-close" class="fa fa-close"></i>
       </div>
-      <div id="dialog-container" class="dialog-container">
 
-        <div id="dialog-table" class="dialog-table">
-        </div>
-
+      <div class="dialog-body">
+        <div id="dialog-table"></div>
       </div>
-      <div class="dialogFooter">
-        <div class="filter-label">Filter :</div>
+
+      <div class="dialog-footer">
+        <label>Filter :</label>
         <input class="dialog-filter" type="text/css" id="search-filter" placeholder="Filter" maxlength="7">
       </div>
     </div>
-
   </dialog>
 
   <!-- CHART -->
-  <div class=line-chart-container>
-    <canvas id="line-chart" height="400"></canvas>
+  <div class="chart-wrapper">
+    <canvas id="line-chart"></canvas>
   </div>
 
   <table class="table-tools">
@@ -56,21 +51,23 @@
     <tr>
       <td>Asset 1</td>
       <td><input id="input-asset-1" class="input-asset" maxlength="7"></td>
-      <td><button id="btn-search-asset-1" class="btnFind"><i class="fa fa-search"></i></button></td>
+      <td><button id="btn-search-asset-1" class="btn-find"><i class="fa fa-search"></i></button></td>
     </tr>
     <tr>
       <td>Asset 2</td>
       <td><input id="input-asset-2" class="input-asset" maxlength="7"></td>
-      <td><button id="btn-search-asset-2" class="btnFind"><i class="fa fa-search"></i></button></td>
+      <td><button id="btn-search-asset-2" class="btn-find"><i class="fa fa-search"></i></button></td>
     </tr>
   </table>
 
 </body>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.0/Chart.min.js"></script>
+<script src="js/chartDefaults.js"></script>
 <script src="js/tools.js"></script>
 <script src="js/binanceAPI.js"></script>
 <script src="js/assetsPairs.js"></script>
-<script src="js/klinesChart.js"></script>
+<script src="js/lineChart.js"></script>
 <script src="js/dialog.js"></script>
 <script>
 
@@ -78,7 +75,7 @@
   inputAsset2.value = "USDT";
   selectInterval.value = "1d";
 
-  loadKlines();
+  loadClosePrices();
 </script>
 
 
