@@ -13,17 +13,16 @@ selectInterval.innerHTML = intervals.reduce( (acc,list)=>{
 },'');
 
 /*   E V E N T S   */
+
 btnSearchAsset1.onclick = function () {
-  asset1 = inputAsset2.value;
-  asset2 = inputAsset2.value;
+  [asset1,asset2] = getInputAssets();
   
   if (assets.includes(asset2)) {
-    dialogWindow.show();
+    openModal();
     addAssetButtonsDiv(Object.keys(assetsPairs[asset1]).sort(), inputAsset1);
     
   } else if (asset1 === "") {
-    dialogWindow.show();
-    
+    openModal();
     addAssetButtonsDiv(assets, inputAsset1);
   } else {
     alert("ASset 2 doesn't exist");
@@ -32,13 +31,13 @@ btnSearchAsset1.onclick = function () {
 
 
 btnSearchAsset2.onclick = function () {
-  asset1 = inputAsset1.value;
-  asset2 = inputAsset2.value;
+  [asset1,asset2] = getInputAssets();
+
   if (assets.includes(asset1)) {
-    dialogWindow.show();
-    addAssetButtonsDiv(Object.keys(assetsPairs[asset1]).sort(), inputAsset2);
-  } else if (asset2 === "") {
-    dialogWindow.show();
+    openModal();
+    addAssetButtonsDiv(Object.keys(assetsPairs[asset2]).sort(), inputAsset2);
+  } else if (asset1 === "") {
+    openModal();
     addAssetButtonsDiv(assets, inputAsset2);
   }
 }
@@ -50,6 +49,11 @@ inputAsset1.onkeydown = function (event) {
     event.preventDefault();
     loadClosePrices();
   }
+  
+}
+
+inputAsset1.onkeyup = function(){
+  inputAsset1.value = inputAsset1.value.toUpperCase();
 }
 
 inputAsset2.onkeydown = function (event) {
@@ -59,6 +63,9 @@ inputAsset2.onkeydown = function (event) {
   }
 }
 
+inputAsset2.onkeyup = function(){
+  inputAsset2.value = inputAsset2.value.toUpperCase();
+}
 
 selectInterval.onchange = function(event){
   loadClosePrices();
@@ -74,6 +81,10 @@ function getCurrentPair() {
 
 function getCurrentInterval() {
   return selectInterval.value;
+}
+
+function getInputAssets(){
+  return [inputAsset1.value,inputAsset2.value];
 }
 
 /*   F U N C T I O N S   */

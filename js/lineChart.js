@@ -22,10 +22,7 @@ const lineChart = new Chart(canvasChart, {
 });
 
 
-
-
 function loadClosePrices() {
-
     const [closePrices, timestamps] = getClosePrices();
 
     lineChart.data.labels = timestamps;

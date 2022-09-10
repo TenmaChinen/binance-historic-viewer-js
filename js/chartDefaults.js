@@ -71,12 +71,12 @@ Chart.defaults.line.scales.xAxes[0].ticks = {
     fontSize: X_AXIS_FONT_SIZE,
     maxTicksLimit: 8,
     autoskip: true,
-    maxRotation: 0 ,
+    maxRotation: 0,
     minRotation: 0,
-    includeBounds : false,
-    callback : (tick,index,array) => {
+    includeBounds: false,
+    callback: (tick, index, array) => {
         // console.log(index,tick);
-        if(index != 0) return tick;
+        if (index != 0) return tick;
         else return null;
     }
 };
@@ -86,11 +86,17 @@ Chart.defaults.line.scales.yAxes[0].type = "linear";
 Chart.defaults.line.scales.yAxes[0].position = 'right';
 Chart.defaults.line.scales.yAxes[0].ticks = {
     fontSize: Y_AXIS_FONT_SIZE,
-    maxTicksLimit: 9,
+    maxTicksLimit: 14,
     autoskip: false,
-    callback : (tick,index,array) => {
-        if(index != (array.length -1)) return tick;
-        else return null;
+    callback: (tick, index, array) => {
+        if ((index != 0 ) && (index != (array.length - 1))){
+            if((tick < 1) && (tick != 0)){
+                return String(tick).slice(0,9).padEnd(9,0);
+            }
+            return tick;
+        }else{
+            return null;
+        }
     }
 };
 

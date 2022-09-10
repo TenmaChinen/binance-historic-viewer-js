@@ -20,7 +20,7 @@
 
   <!-- TODO : CHANGE TO MODAL -->
   <!-- M O D A L -->
-  <dialog id="dialog-window">
+  <div id="modal" style="display:none">
     <div class="dialog">
       <div class="dialog-header">
         <h2 class="title">Asset Selector</h2>
@@ -33,38 +33,40 @@
 
       <div class="dialog-footer">
         <label>Filter :</label>
-        <input class="dialog-filter" type="text/css" id="search-filter" placeholder="Filter" maxlength="7">
+        <input class="dialog-filter" type="text/css" id="search-filter" placeholder="Filter" maxlength="9">
       </div>
     </div>
-  </dialog>
-
-  <!-- CHART -->
-  <div class="chart-wrapper">
-    <canvas id="line-chart"></canvas>
   </div>
 
-  <table class="table-tools">
-    <tr>
-      <td>Interval</td>
-      <td><select id="select-interval" class="select-interval"></select></td>
-    </tr>
-    <tr>
-      <td>Asset 1</td>
-      <td><input id="input-asset-1" class="input-asset" maxlength="7"></td>
-      <td><button id="btn-search-asset-1" class="btn-find"><i class="fa fa-search"></i></button></td>
-    </tr>
-    <tr>
-      <td>Asset 2</td>
-      <td><input id="input-asset-2" class="input-asset" maxlength="7"></td>
-      <td><button id="btn-search-asset-2" class="btn-find"><i class="fa fa-search"></i></button></td>
-    </tr>
-  </table>
+  <div class="container">
 
+    <div class="chart-wrapper">
+      <canvas id="line-chart"></canvas>
+    </div>
+
+    <div class="toolbox">
+      <div>
+        <label>Interval</label>
+        <select id="select-interval" class="select-interval"></select>
+      </div>
+      <div>
+        <label>Asset 1</label>
+        <input id="input-asset-1" class="input-asset" maxlength="9">
+        <i id="btn-search-asset-1" class="btn-find fa fa-search"></i>
+      </div>
+      <div>
+        <label>Asset 2</label>
+        <input id="input-asset-2" class="input-asset" maxlength="9">
+        <i id="btn-search-asset-2" class="btn-find fa fa-search"></i>
+      </div>
+    </div>
+
+  </div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.0/Chart.min.js"></script>
 <script src="js/chartDefaults.js"></script>
-<script src="js/tools.js"></script>
+<script src="js/toolbox.js"></script>
 <script src="js/binanceAPI.js"></script>
 <script src="js/assetsPairs.js"></script>
 <script src="js/lineChart.js"></script>
