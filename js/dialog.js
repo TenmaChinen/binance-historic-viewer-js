@@ -12,6 +12,10 @@ let asset1, asset2;
 btnClose.onclick = () => closeModal();
 searchFilter.onkeyup = () => filterResults();
 
+window.onkeydown = (event) => {
+    if(event.keyCode==27) closeModal();
+};
+
 function closeModal() {
     modal.style.setProperty("display", "none");
 }

@@ -25,11 +25,7 @@ body {
 
 .chart-wrapper {
   width: 100%;
-  /* min-height: 300px; */
-  /* height: 100%; */
-  /* max-height: 500px; */
-  padding: 5px;
-  flex-grow: 1;
-  padding-top: 10px;
-  /* background-color: gray; */
+  height: 100%;
+  max-height: 70wh;
+  padding: 20px 10px 0px 10px;
 }
